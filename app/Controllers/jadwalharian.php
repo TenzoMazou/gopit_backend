@@ -21,6 +21,7 @@ class jadwalharian extends BaseController
         $this->encrypt = \Config\Services::encrypter();
         $this->bcrypt = \Config\Services::bcrypt();
     }
+
     public function index()
     {
         $Modeljadwalharian = new Modeljadwalharian();
@@ -28,7 +29,8 @@ class jadwalharian extends BaseController
                 ->join('jadwal_umum', 'jadwal_harian.jadwal = jadwal_umum.id')
                 ->join('instruktur as instruktur1', 'jadwal_umum.id_instruktur = instruktur1.id_instruktur')
                 ->join('kelas', 'jadwal_umum.id_kelas = kelas.id_kelas')
-                ->join('instruktur as instruktur2', 'jadwal_harian.id_instruktur = instruktur2.id_instruktur', 'left')
+                ->join('instruktur as instruktur2', 'jadwal_harian.instruktur_pengganti = instruktur2.id_instruktur', 'left')
+                ->orderBy('jadwal_harian.tanggal_kelas', 'ASC')
                 ->findAll();
 
         // Get the current week range
@@ -58,7 +60,7 @@ class jadwalharian extends BaseController
         ];
 
         return $this->respond($response, 200);
-        
+
     }
 
     public function show($nama = null, $hari = null, $jam = null)
