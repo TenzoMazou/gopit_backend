@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class Modeljadwalharian extends Model
 {
-    protected $table = 'jadwalharian';
+    protected $table = 'jadwal_harian';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'jadwal','tanggal','status','jumlah_peserta'
+        'jadwal','tanggal_kelas','status_kelas', 'id_instruktur', 'instruktur_pengganti'
     ];
 }

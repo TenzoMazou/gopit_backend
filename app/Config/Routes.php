@@ -35,6 +35,7 @@ $routes->resource('member', ['filter' => 'cors']);
 $routes->resource('pegawai', ['filter' => 'cors']);
 $routes->resource('jadwalumum', ['filter' => 'cors']);
 $routes->resource('instruktur', ['filter' => 'cors']);
+$routes->resource('jadwalharian', ['filter' => 'cors']);
 $routes->post('jadwalumum', 'Controller::create');
 
 // $routes->get('login', 'Login::index');
